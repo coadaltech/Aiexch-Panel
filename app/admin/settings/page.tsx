@@ -71,7 +71,7 @@ export default function AdminSettingsPage() {
 
   return (
     <div className="flex h-screen bg-background">
-      <AdminSidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} activeSection="settings" />
+      {/* <AdminSidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} activeSection="settings" /> */}
 
       <div className="flex-1 flex flex-col overflow-hidden lg:ml-64">
         <AdminHeader setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} activeSection="settings" />
