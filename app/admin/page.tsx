@@ -10,6 +10,7 @@ import { TournamentManagement } from "@/components/admin/tournament-management"
 import { WhiteLabelSettings } from "@/components/admin/white-label-settings"
 import { AnalyticsReports } from "@/components/admin/analytics-reports"
 import { PromotionsManagement } from "@/components/admin/promotions-management"
+import AdminSettingsPage from "@/components/admin/settings"
 
 export default function AdminPanel() {
   const [activeSection, setActiveSection] = useState("dashboard")
@@ -31,9 +32,11 @@ export default function AdminPanel() {
         return <WhiteLabelSettings />
       case "analytics":
         return <AnalyticsReports />
+      case "settings":
+        return <AdminSettingsPage />
       default:
         return <DashboardOverview />
-    }
+    }   
   }
 
   return (

@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Bell, Menu, Search, Sun, Moon, LogOut, Settings, User, X } from "lucide-react"
+import { Bell, Menu, Search, Sun, Moon, LogOut, User, X } from "lucide-react"
 import { useTheme } from "next-themes"
 
 interface AdminHeaderProps {
@@ -96,14 +96,12 @@ export function AdminHeader({ setSidebarOpen, sidebarOpen, activeSection }: Admi
           >
             <div className="relative w-5 h-5">
               <Menu
-                className={`w-5 h-5 absolute transition-all duration-300 ${
-                  sidebarOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
-                }`}
+                className={`w-5 h-5 absolute transition-all duration-300 ${sidebarOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
+                  }`}
               />
               <X
-                className={`w-5 h-5 absolute transition-all duration-300 ${
-                  sidebarOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
-                }`}
+                className={`w-5 h-5 absolute transition-all duration-300 ${sidebarOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
+                  }`}
               />
             </div>
           </Button>
@@ -174,9 +172,8 @@ export function AdminHeader({ setSidebarOpen, sidebarOpen, activeSection }: Admi
                   notifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className={`p-4 border-b cursor-pointer hover:bg-muted/50 transition-colors ${
-                        notification.unread ? "bg-muted/30" : ""
-                      }`}
+                      className={`p-4 border-b cursor-pointer hover:bg-muted/50 transition-colors ${notification.unread ? "bg-muted/30" : ""
+                        }`}
                       onClick={() => markAsRead(notification.id)}
                     >
                       <div className="flex items-start justify-between">

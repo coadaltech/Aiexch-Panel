@@ -78,8 +78,8 @@ const mockPromotions: PromotionalContent[] = [
 export default function PromotionsPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [promotions, setPromotions] = useState<PromotionalContent[]>(mockPromotions)
-  const [loading, setLoading] = useState(false)
-  const [saved, setSaved] = useState(false)
+  // const [loading, setLoading] = useState(false)
+  // const [saved, setSaved] = useState(false)
   const [showCreateForm, setShowCreateForm] = useState(false)
 
   // Form state for creating new promotion
@@ -94,13 +94,13 @@ export default function PromotionsPage() {
     endDate: "",
   })
 
-  const handleSave = async () => {
-    setLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setLoading(false)
-    setSaved(true)
-    setTimeout(() => setSaved(false), 3000)
-  }
+  // const handleSave = async () => {
+  //   setLoading(true)
+  //   await new Promise((resolve) => setTimeout(resolve, 1500))
+  //   setLoading(false)
+  //   setSaved(true)
+  //   setTimeout(() => setSaved(false), 3000)
+  // }
 
   const handleCreatePromotion = () => {
     const promotion: PromotionalContent = {
@@ -170,7 +170,7 @@ export default function PromotionsPage() {
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         activeSection="promotions"
-        setActiveSection={() => {}}
+        setActiveSection={() => { }}
       />
 
       <div className="flex-1 flex flex-col overflow-hidden lg:ml-64">
@@ -184,7 +184,7 @@ export default function PromotionsPage() {
                 <p className="text-muted-foreground mt-2">Manage banners, bonus offers, and announcements</p>
               </div>
               <div className="flex items-center gap-3">
-                {saved && (
+                {
                   <Badge
                     variant="secondary"
                     className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
@@ -192,7 +192,7 @@ export default function PromotionsPage() {
                     <CheckCircle className="w-3 h-3 mr-1" />
                     Changes Saved
                   </Badge>
-                )}
+                }
                 <Button onClick={() => setShowCreateForm(true)}>
                   <Plus className="w-4 h-4 mr-2" />
                   Create Promotion

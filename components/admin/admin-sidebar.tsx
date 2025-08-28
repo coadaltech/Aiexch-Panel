@@ -13,7 +13,7 @@ interface AdminSidebarProps {
 }
 
 const navigation = [
-  { id: "dashboard", name: "Dashboard", icon: LayoutDashboard},
+  { id: "dashboard", name: "Dashboard", icon: LayoutDashboard },
   { id: "users", name: "User Management", icon: Users },
   { id: "games", name: "Game Management", icon: Gamepad2 },
   { id: "tournaments", name: "Tournaments", icon: Trophy },
