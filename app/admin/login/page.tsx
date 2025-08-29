@@ -59,7 +59,7 @@ export default function AdminLogin() {
       // Mock authentication logic
       if (formData.email === "admin@aiexch.com" && formData.password === "admin123") {
         // Redirect to admin dashboard
-        window.location.href = "/admin"
+        window.location.href = "/admin/dashboard"
       } else {
         setLoginError("Invalid email or password. Please try again.")
       }
@@ -159,7 +159,7 @@ export default function AdminLogin() {
                     Remember me
                   </Label>
                 </div>
-                <Link href="/admin/forgot-password" className="text-sm text-primary hover:underline">
+                <Link href="/admin/forget-password" className="text-sm text-primary hover:underline">
                   Forgot password?
                 </Link>
               </div>

@@ -130,21 +130,9 @@ export default function AdminProfile() {
 
 
   return (
-    <div className="container mx-auto p-6 max-w-6xl">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-foreground">Profile Management</h1>
-        <p className="text-muted-foreground">Manage your account settings, security, and preferences</p>
-      </div>
+    <div className=" mx-auto p-6 ">
 
       <div className="mb-6 flex items-center gap-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => router.back()}
-          className="flex items-center gap-2"
-        >
-          ← Back
-        </Button>
         <div>
           <h1 className="text-3xl font-bold text-foreground">Profile Management</h1>
           <p className="text-muted-foreground">Manage your account settings, security, and preferences</p>
@@ -166,7 +154,7 @@ export default function AdminProfile() {
       )}
 
       <Tabs defaultValue="profile" className="space-y-6">
-      {/* <TabsList
+        {/* <TabsList
           className="
             w-full 
             overflow-x-auto 
@@ -183,112 +171,143 @@ export default function AdminProfile() {
         </TabsList> */}
 
         <div className="w-full overflow-x-auto">
-              <TabsList className="grid w-full grid-cols-5 min-w-[600px] sm:min-w-0">
-                <TabsTrigger value="profile" className="text-xs sm:text-sm">
-                Profile
-                </TabsTrigger>
-                <TabsTrigger value="security" className="text-xs sm:text-sm">
-                Security
-                </TabsTrigger>
-                <TabsTrigger value="notifications" className="text-xs sm:text-sm">
-                Notifications
-                </TabsTrigger>
-                <TabsTrigger value="activity" className="text-xs sm:text-sm">
-                Activity
-                </TabsTrigger>
-                <TabsTrigger value="preferences" className="text-xs sm:text-sm">
-                Preferences
-                </TabsTrigger>
-              </TabsList>
-            </div>
+          <TabsList className="grid w-full grid-cols-5 min-w-[600px] sm:min-w-0">
+            <TabsTrigger value="profile" className="text-xs sm:text-sm">
+              Profile
+            </TabsTrigger>
+            <TabsTrigger value="security" className="text-xs sm:text-sm">
+              Security
+            </TabsTrigger>
+            <TabsTrigger value="notifications" className="text-xs sm:text-sm">
+              Notifications
+            </TabsTrigger>
+            <TabsTrigger value="activity" className="text-xs sm:text-sm">
+              Activity
+            </TabsTrigger>
+            <TabsTrigger value="preferences" className="text-xs sm:text-sm">
+              Preferences
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="profile" className="space-y-6">
           <div className="grid gap-6 lg:grid-cols-3">
+            {/* Profile Information */}
             <Card className="lg:col-span-2">
               <CardHeader>
                 <CardTitle>Profile Information</CardTitle>
-                <CardDescription>Update your personal information and profile details</CardDescription>
+                <CardDescription>
+                  Update your personal information and profile details
+                </CardDescription>
               </CardHeader>
+
               <CardContent className="space-y-6">
-                <div className="flex items-center space-x-6">
-                  <div className="relative">
+                {/* Avatar & Basic Info */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                  {/* Avatar */}
+                  <div className="relative flex justify-center sm:justify-start">
                     <Avatar className="w-24 h-24">
                       <AvatarImage src="/admin-avatar.png" alt="Admin" />
-                      <AvatarFallback className="bg-primary text-primary-foreground text-2xl">AD</AvatarFallback>
+                      <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
+                        AD
+                      </AvatarFallback>
                     </Avatar>
-                    <Button size="sm" className="absolute -bottom-2 -right-2 rounded-full w-8 h-8 p-0">
+                    <Button
+                      size="sm"
+                      className="absolute -bottom-2 -right-2 rounded-full w-8 h-8 p-0"
+                    >
                       <Camera className="w-4 h-4" />
                     </Button>
                   </div>
-                  <div className="space-y-2">
+
+                  {/* Name, Role & Date */}
+                  <div className="space-y-2 text-center sm:text-left">
                     <h3 className="text-xl font-semibold">{profile.name}</h3>
                     <Badge variant="secondary" className="bg-primary/10 text-primary">
                       <Shield className="w-3 h-3 mr-1" />
                       {profile.role}
                     </Badge>
-                    <p className="text-sm text-muted-foreground">Member since {profile.joinDate}</p>
+                    <p className="text-sm text-muted-foreground">
+                      Member since {profile.joinDate}
+                    </p>
                   </div>
                 </div>
 
+                {/* Form Fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Full Name */}
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                       <Input
                         id="name"
                         value={profile.name}
-                        onChange={(e) => setProfile((prev) => ({ ...prev, name: e.target.value }))}
+                        onChange={(e) =>
+                          setProfile((prev) => ({ ...prev, name: e.target.value }))
+                        }
                         className="pl-10"
                       />
                     </div>
                   </div>
 
+                  {/* Email */}
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                       <Input
                         id="email"
                         type="email"
                         value={profile.email}
-                        onChange={(e) => setProfile((prev) => ({ ...prev, email: e.target.value }))}
+                        onChange={(e) =>
+                          setProfile((prev) => ({ ...prev, email: e.target.value }))
+                        }
                         className="pl-10"
                       />
                     </div>
                   </div>
 
+                  {/* Phone */}
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                       <Input
                         id="phone"
                         value={profile.phone}
-                        onChange={(e) => setProfile((prev) => ({ ...prev, phone: e.target.value }))}
+                        onChange={(e) =>
+                          setProfile((prev) => ({ ...prev, phone: e.target.value }))
+                        }
                         className="pl-10"
                       />
                     </div>
                   </div>
 
+                  {/* Location */}
                   <div className="space-y-2">
                     <Label htmlFor="location">Location</Label>
                     <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                       <Input
                         id="location"
                         value={profile.location}
-                        onChange={(e) => setProfile((prev) => ({ ...prev, location: e.target.value }))}
+                        onChange={(e) =>
+                          setProfile((prev) => ({ ...prev, location: e.target.value }))
+                        }
                         className="pl-10"
                       />
                     </div>
                   </div>
 
+                  {/* Department */}
                   <div className="space-y-2">
                     <Label htmlFor="department">Department</Label>
                     <Select
                       value={profile.department}
-                      onValueChange={(value) => setProfile((prev) => ({ ...prev, department: value }))}
+                      onValueChange={(value) =>
+                        setProfile((prev) => ({ ...prev, department: value }))
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue />
@@ -303,11 +322,14 @@ export default function AdminProfile() {
                     </Select>
                   </div>
 
+                  {/* Role */}
                   <div className="space-y-2">
                     <Label htmlFor="role">Role</Label>
                     <Select
                       value={profile.role}
-                      onValueChange={(value) => setProfile((prev) => ({ ...prev, role: value }))}
+                      onValueChange={(value) =>
+                        setProfile((prev) => ({ ...prev, role: value }))
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue />
@@ -322,20 +344,30 @@ export default function AdminProfile() {
                   </div>
                 </div>
 
+                {/* Bio */}
                 <div className="space-y-2">
                   <Label htmlFor="bio">Bio</Label>
                   <Textarea
                     id="bio"
                     value={profile.bio}
-                    onChange={(e) => setProfile((prev) => ({ ...prev, bio: e.target.value }))}
+                    onChange={(e) =>
+                      setProfile((prev) => ({ ...prev, bio: e.target.value }))
+                    }
                     rows={4}
                     placeholder="Tell us about yourself..."
                   />
                 </div>
 
-                <div className="flex justify-end space-x-4">
-                  <Button variant="outline">Cancel</Button>
-                  <Button onClick={handleSaveProfile} disabled={isLoading}>
+                {/* Actions */}
+                <div className="flex flex-col sm:flex-row justify-end gap-3 sm:space-x-4">
+                  <Button variant="outline" className="w-full sm:w-auto">
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={handleSaveProfile}
+                    disabled={isLoading}
+                    className="w-full sm:w-auto"
+                  >
                     {isLoading ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -349,6 +381,7 @@ export default function AdminProfile() {
               </CardContent>
             </Card>
 
+            {/* Account Stats */}
             <Card>
               <CardHeader>
                 <CardTitle>Account Stats</CardTitle>
@@ -381,6 +414,7 @@ export default function AdminProfile() {
             </Card>
           </div>
         </TabsContent>
+
 
         <TabsContent value="security" className="space-y-6">
           <div className="grid gap-6 lg:grid-cols-2">
